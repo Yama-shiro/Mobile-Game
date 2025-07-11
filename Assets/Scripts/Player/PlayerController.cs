@@ -1,7 +1,10 @@
 using Ebac.Core.Singleton;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using DG.Tweening;
+
 
 public class PlayerController : Singleton<PlayerController>
 {
@@ -15,11 +18,16 @@ public class PlayerController : Singleton<PlayerController>
     public string tagToCheckEnemy = "Enemy";
     public string tagToCheckEndLine = "EndLine";
 
+    public TextMeshPro uiTextPowerUp;
+
     //privates
     private bool _canRun;
     private Vector3 _pos;
     private float _currentSpeed;
     private Vector3 _startPosition;
+    
+    [Header("Coin Setup")]
+    public GameObject coinCollector;
 
     public GameObject endScreen;
     public bool invencible = false;
@@ -75,7 +83,7 @@ public class PlayerController : Singleton<PlayerController>
 
     public void SetPowerUpText(string s)
     {
-        //uiTextPowerUp.text = s;
+        uiTextPowerUp.text = s;
     }
     public void PowerUpSpeedUp(float f)
     {
@@ -89,6 +97,26 @@ public class PlayerController : Singleton<PlayerController>
     public void SetInvencible(bool b = true)
     {
         invencible = b;
+    }
+
+    public void ChangeHeight(float amount, float duration, float animationDuration, Ease ease)
+    {
+        /*var p = transform.position;
+        p.y = _startPosition.y + amount;
+        transform.position = p;*/
+        transform.DOMoveY(_startPosition.y + amount,
+       animationDuration).SetEase(ease);//.OnComplete(ResetHeight);a
+        Invoke(nameof(ResetHeight), duration);
+    }
+
+    public void ResetHeight()
+    {
+        transform.DOMoveY(_startPosition.y, .1f);
+    }
+
+    public void ChangeCoinCollectorSize(float amount)
+    {
+        coinCollector.transform.localScale = Vector3.one * amount;
     }
 
     #endregion
