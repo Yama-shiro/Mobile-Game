@@ -33,7 +33,7 @@ public class ColectableBase : MonoBehaviour
         OnCollect();
     }
 
-    private void HideObjects()
+    public void HideObjects()
     {
         gameObject.SetActive(false);
     }
