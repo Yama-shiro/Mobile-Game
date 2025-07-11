@@ -25,9 +25,12 @@ public class PlayerController : Singleton<PlayerController>
     private Vector3 _pos;
     private float _currentSpeed;
     private Vector3 _startPosition;
-    
+
     [Header("Coin Setup")]
     public GameObject coinCollector;
+
+    [Header("Animation")]
+    public AnimatorManager animatorManager;
 
     public GameObject endScreen;
     public bool invencible = false;
@@ -40,7 +43,7 @@ public class PlayerController : Singleton<PlayerController>
 
     void Update()
     {
-        if(!_canRun) return;
+        if (!_canRun) return;
 
 
         var pos = target.position;
@@ -55,69 +58,82 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (collision.transform.tag == tagToCheckEndLine)
         {
-            if (!invencible) EndGame();
+            if (!invencible)
+            {
+                MoveBack(collision.transform);
+                EndGame(AnimatorManager.AnimationType.DEAD);
+
+            }
+
         }
-
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.tag == tagToCheckEndLine)
+        private void OnTriggerEnter(Collider other)
         {
-            if (!invencible) EndGame();
+            if (other.transform.tag == tagToCheckEndLine)
+            {
+                if (!invencible) EndGame();
+            }
         }
+
+        private void MoveBack(Transform t)
+        {
+            t.DOMoveZ(-1f, .3f).SetRelative();
+        }
+
+        private void EndGame(AnimatorManager.AnimationType animationType = AnimatorManager.AnimationType.IDLE)
+        {
+            _canRun = false;
+            endScreen.SetActive(true);
+            animatorManager.Play(animationType);
+        }
+
+        public void StartToRun()
+        {
+            _canRun = true;
+            animatorManager.Play(AnimatorManager.AnimationType.RUN);
+        }
+
+        #region PowerUps
+
+        public void SetPowerUpText(string s)
+        {
+            uiTextPowerUp.text = s;
+        }
+        public void PowerUpSpeedUp(float f)
+        {
+            _currentSpeed = f;
+        }
+        public void ResetSpeed()
+        {
+            _currentSpeed = speed;
+        }
+
+        public void SetInvencible(bool b = true)
+        {
+            invencible = b;
+        }
+
+        public void ChangeHeight(float amount, float duration, float animationDuration, Ease ease)
+        {
+            /*var p = transform.position;
+            p.y = _startPosition.y + amount;
+            transform.position = p;*/
+            transform.DOMoveY(_startPosition.y + amount,
+           animationDuration).SetEase(ease);//.OnComplete(ResetHeight);a
+            Invoke(nameof(ResetHeight), duration);
+        }
+
+        public void ResetHeight()
+        {
+            transform.DOMoveY(_startPosition.y, .1f);
+        }
+
+        public void ChangeCoinCollectorSize(float amount)
+        {
+            coinCollector.transform.localScale = Vector3.one * amount;
+        }
+
+        #endregion
     }
 
-    private void EndGame()
-    {
-        _canRun = false;
-        endScreen.SetActive(true);
-    }
 
-    public void StartToRun()
-    {
-        _canRun = true;
-    }
-
-    #region PowerUps
-
-    public void SetPowerUpText(string s)
-    {
-        uiTextPowerUp.text = s;
-    }
-    public void PowerUpSpeedUp(float f)
-    {
-        _currentSpeed = f;
-    }
-    public void ResetSpeed()
-    {
-        _currentSpeed = speed;
-    }
-
-    public void SetInvencible(bool b = true)
-    {
-        invencible = b;
-    }
-
-    public void ChangeHeight(float amount, float duration, float animationDuration, Ease ease)
-    {
-        /*var p = transform.position;
-        p.y = _startPosition.y + amount;
-        transform.position = p;*/
-        transform.DOMoveY(_startPosition.y + amount,
-       animationDuration).SetEase(ease);//.OnComplete(ResetHeight);a
-        Invoke(nameof(ResetHeight), duration);
-    }
-
-    public void ResetHeight()
-    {
-        transform.DOMoveY(_startPosition.y, .1f);
-    }
-
-    public void ChangeCoinCollectorSize(float amount)
-    {
-        coinCollector.transform.localScale = Vector3.one * amount;
-    }
-
-    #endregion
-}
