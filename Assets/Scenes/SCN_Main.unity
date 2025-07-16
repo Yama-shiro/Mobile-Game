@@ -2082,9 +2082,20 @@ MonoBehaviour:
   tagToCheckEndLine: EndLine
   uiTextPowerUp: {fileID: 0}
   coinCollector: {fileID: 2122030407}
-  animatorManager: {fileID: 0}
+  animatorManager: {fileID: 2099415150}
   endScreen: {fileID: 1816772794}
   invencible: 0
+--- !u!114 &2099415150 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2963957900018344233, guid: 89e20167823a30d459856414377997d1, type: 3}
+  m_PrefabInstance: {fileID: 668799815}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c602fa1b00fe13242b0c2200d5f8a9a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2122030407
 GameObject:
   m_ObjectHideFlags: 0
