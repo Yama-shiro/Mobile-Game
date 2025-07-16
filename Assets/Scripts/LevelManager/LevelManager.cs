@@ -9,8 +9,15 @@ public class LevelManager : MonoBehaviour
     public List<GameObject> levels;
 
     [Header("Pieces")]
+    public List<LevelPieceBase> levelPiecesStart;
     public List<LevelPieceBase> levelPieces;
+    public List<LevelPieceBase> levelPiecesEnd;
+
+    public int piecesStartNumber = 3;
     public int piecesNumber = 5;
+    public int piecesEndNumber = 1;
+
+    public float timeBeteweenPieces = .3f;
 
     public List<LevelPieceBase> _spawnedPieces;
 
@@ -51,15 +58,23 @@ public class LevelManager : MonoBehaviour
     {
         _spawnedPieces = new List<LevelPieceBase>();
 
-        for(int i =0; i < piecesNumber; i++)
+        for (int i = 0; i < piecesStartNumber; i++)
         {
-            CreateLevelPiece();
+            CreateLevelPiece(levelPiecesStart);
+        }
+        for (int i = 0; i < piecesNumber; i++)
+        {
+            CreateLevelPiece(levelPieces);
+        }
+        for (int i = 0; i < piecesEndNumber; i++)
+        {
+            CreateLevelPiece(levelPiecesEnd);
         }
     }
 
-    private void CreateLevelPiece()
+    private void CreateLevelPiece(List<LevelPieceBase> list)
     {
-        var piece = levelPieces[Random.Range(0, levelPieces.Count)];
+        var piece = list[Random.Range(0, list.Count)];
         var spawnedPiece = Instantiate(piece, container);
 
         if(_spawnedPieces.Count > 0)
@@ -70,6 +85,17 @@ public class LevelManager : MonoBehaviour
         }
 
         _spawnedPieces.Add(spawnedPiece);
+    }
+
+    IEnumerator CreateLevelPiecesCoroutine()
+    {
+        _spawnedPieces = new List<LevelPieceBase>();
+
+        for (int i = 0; i < piecesNumber; i++)
+        {
+            CreateLevelPiece(levelPieces);
+            yield return new WaitForSeconds(timeBeteweenPieces);
+        }
     }
     #endregion
 
