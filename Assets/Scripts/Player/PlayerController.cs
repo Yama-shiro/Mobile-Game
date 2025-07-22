@@ -36,10 +36,18 @@ public class PlayerController : Singleton<PlayerController>
     public GameObject endScreen;
     public bool invencible = false;
 
+    [SerializeField] public BounceHelper _bounceHelper;
+
     private void Start()
     {
         _startPosition = transform.position;
         ResetSpeed();
+    }
+
+    public void Bounce()
+    {
+        if(_bounceHelper != null) 
+            _bounceHelper.Bounce();
     }
 
     void Update()
