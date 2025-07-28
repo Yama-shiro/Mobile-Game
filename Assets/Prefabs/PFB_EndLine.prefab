@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3792108398475547806}
   - component: {fileID: 3792108398475547807}
   m_Layer: 0
-  m_Name: PFB_Enemy
-  m_TagString: Untagged
+  m_Name: PFB_EndLine
+  m_TagString: EndLine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
