@@ -65,7 +65,7 @@ public class PlayerController : Singleton<PlayerController>
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == tagToCheckEndLine)
+        if (collision.transform.tag == tagToCheckEnemy)
         {
             if (!invencible)
             {
@@ -80,7 +80,12 @@ public class PlayerController : Singleton<PlayerController>
         {
             if (other.transform.tag == tagToCheckEndLine)
             {
-                if (!invencible) EndGame();
+                if (!invencible)
+                {
+                    MoveBack(other.transform);
+                    EndGame(AnimatorManager.AnimationType.DEAD);
+
+                }
             }
         }
 
