@@ -105,6 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9084324482575652441}
   - component: {fileID: 3001610048918323342}
+  - component: {fileID: 7137317715695428991}
   m_Layer: 0
   m_Name: PFB_PowerUpInvincible
   m_TagString: Untagged
@@ -140,3 +141,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7137317715695428991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4721933238426008188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 622c49e3af5702243b1903ed7223caa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  compareTag: Player
+  particleSystem: {fileID: 0}
+  timeToHide: 3
+  graphicItem: {fileID: 4721933238426008188}
+  audioSource: {fileID: 0}
+  duration: 3
