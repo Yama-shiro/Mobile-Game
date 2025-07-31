@@ -1606,7 +1606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1493464691
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2134,7 +2134,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2053608910}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30969fefbddcbed49bad38c292ed3f6f, type: 3}
   m_Name: 
@@ -2250,7 +2250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1455926075}
   lerpSpeed: 9
-  speed: 30
+  speed: 10
   tagToCheckEnemy: Enemy
   tagToCheckEndLine: EndLine
   uiTextPowerUp: {fileID: 0}
