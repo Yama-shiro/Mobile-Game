@@ -86,7 +86,8 @@ public class LevelManager : MonoBehaviour
         //ColorManager.Instance.ChangeColorByType(_currSetup.artType);
 
         StartCoroutine(ScalePiecesByType());
-       
+        CoinsAnimatorManager.Instance.StartAnimation();
+
 
     }
 

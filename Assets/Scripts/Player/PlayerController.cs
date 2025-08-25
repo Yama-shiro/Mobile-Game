@@ -53,7 +53,6 @@ public class PlayerController : Singleton<PlayerController>
 
     public void Bounce()
     {
-        if(_bounceHelper != null) 
             _bounceHelper.Bounce();
     }
 

@@ -107,7 +107,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7737550672440552153}
   - component: {fileID: 7737550672440552132}
-  - component: {fileID: 7737550672440552133}
   - component: {fileID: 2904722030638266190}
   m_Layer: 0
   m_Name: PFB_Coin
@@ -145,23 +144,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.7
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7737550672440552133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7737550672440552130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52ae274e7a1e9f84ea80e4cf2f9f5a11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  compareTag: Player
-  particleSystem: {fileID: 0}
-  timeToHide: 0
-  graphicItem: {fileID: 5942976719232144848}
-  audioSource: {fileID: 0}
 --- !u!114 &2904722030638266190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +159,7 @@ MonoBehaviour:
   compareTag: Player
   particleSystem: {fileID: 7325946562171834582}
   timeToHide: 3
-  graphicItem: {fileID: 7737550672440552130}
+  graphicItem: {fileID: 5942976719232144848}
   audioSource: {fileID: 0}
   collider: {fileID: 7737550672440552132}
   collect: 0
@@ -233,6 +215,10 @@ PrefabInstance:
     - target: {fileID: 2683473542689318426, guid: 9b551b038edd7a14cbc95050178fd94a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621024971998674722, guid: 9b551b038edd7a14cbc95050178fd94a, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5645141259246628491, guid: 9b551b038edd7a14cbc95050178fd94a, type: 3}
       propertyPath: m_Name
