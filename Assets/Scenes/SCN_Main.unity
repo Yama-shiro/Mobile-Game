@@ -1716,7 +1716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pastPosition: {x: 0, y: 0}
-  velocity: 9
+  velocity: 2
 --- !u!65 &1455926077
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2873,6 +2873,8 @@ MonoBehaviour:
   coinCollector: {fileID: 2122030407}
   animatorManager: {fileID: 2099415150}
   vfxDeath: {fileID: 2297131611669613809, guid: a4297ef1e235040489cf8338e8668e5d, type: 3}
+  limit: 4
+  limitVector: {x: -4, y: 4}
   endScreen: {fileID: 1816772794}
   invencible: 0
   _bounceHelper: {fileID: 2053608918}
